@@ -1,0 +1,15 @@
+# 2026-11-22 10:18:26  kubectl logs job/ingress-check
+# check (in-cluster)  2026-11-22 03:18:08  target=ingress-nginx-controller.ingress-nginx.svc.cluster.local:80  domain=iam-367.com
+PASS  portal / แสดงรหัสนักศึกษา  (www.iam-367.com/ -> 200)
+PASS  portal มีรูป  (www.iam-367.com/photo -> 200)
+PASS  research แสดงหน้าสรุป  (www.iam-367.com/research -> 200)
+PASS  api-367 แสดงข้อความ (ASCII)  (www.iam-367.com/api-367/hello-k8s -> 200)
+PASS  api-367 แสดงข้อความ (ไทย)  (www.iam-367.com/api-367/%E0%B8%AA%E0%B8%A7%E0%B8%B1%E0%B8%AA%E0%B8%94%E0%B8%B5 -> 200)
+PASS  api-367 กัน HTML injection  (www.iam-367.com/api-367/%3Cb%3Ex%3C%2Fb%3E -> 200)
+PASS  admin / มีปุ่มแก้ portal/research  (admin.iam-367.com/ -> 200)
+PASS  admin /portal ดึงข้อมูล portal  (admin.iam-367.com/portal -> 200)
+PASS  admin /research มีกล่องแก้ไข  (admin.iam-367.com/research -> 200)
+PASS  www ไม่เปิด /internal/config จากภายนอก  (www.iam-367.com/internal/config -> 403)
+PASS  www ไม่เปิดหน้า /edit ให้คนทั่วไป  (www.iam-367.com/edit -> 404)
+PASS  host ที่ไม่รู้จักได้ 404  (other.iam-367.com/ -> 404)
+---- pass=12 fail=0

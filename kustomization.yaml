@@ -1,0 +1,39 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+  - manifests/10-portal-367.yaml
+  - manifests/20-app-research.yaml
+  - manifests/30-api-367.yaml
+  - manifests/35-admin-367.yaml
+  - manifests/40-ingress.yaml
+  - manifests/50-check-job.yaml
+
+generatorOptions:
+  disableNameSuffixHash: true
+
+configMapGenerator:
+  - name: student-info
+    envs:
+      - config.env
+  - name: portal-367-code
+    files:
+      - app.py=portal-367/app.py
+  - name: portal-367-photo
+    files:
+      - photo.jpg=portal-367/photo.jpg
+  - name: app-research-code
+    files:
+      - app.py=app-research/app.py
+  - name: app-research-seed
+    files:
+      - research.seed.md=app-research/research.seed.md
+  - name: api-367-code
+    files:
+      - app.py=api-367/app.py
+  - name: admin-367-code
+    files:
+      - app.py=admin-367/app.py
+  - name: ingress-check-script
+    files:
+      - check_in_cluster.py=tests/check_in_cluster.py

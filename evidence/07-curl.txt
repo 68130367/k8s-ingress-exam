@@ -1,0 +1,9 @@
+# 2026-11-22 10:23:32  curl ผ่าน ingress (port-forward :8080, hosts ชี้ 127.0.0.1)
+--- GET http://www.iam-367.com:8080/
+HTTP 200  text/html; charset=utf-8
+--- GET http://www.iam-367.com:8080/research
+HTTP 200  text/html; charset=utf-8
+--- GET http://www.iam-367.com:8080/api-367/hello
+HTTP 200  text/html; charset=utf-8
+--- GET http://admin.iam-367.com:8080/
+HTTP 200  text/html; charset=utf-8

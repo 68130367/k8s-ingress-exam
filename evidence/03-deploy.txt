@@ -1,0 +1,37 @@
+# 2026-11-22 10:17:59  ./deploy.sh
+==> context: minikube
+==> Storage
+ใช้ default StorageClass: standard
+==> Apply (kubectl apply -k .)
+configmap/admin-367-code created
+configmap/api-367-code created
+configmap/app-research-code created
+configmap/app-research-seed created
+configmap/ingress-check-script created
+configmap/portal-367-code created
+configmap/portal-367-photo created
+configmap/student-info created
+service/admin-367 created
+service/api-367 created
+service/app-research created
+service/portal-367 created
+persistentvolumeclaim/app-research-data created
+persistentvolumeclaim/portal-367-data created
+deployment.apps/admin-367 created
+deployment.apps/api-367 created
+deployment.apps/app-research created
+deployment.apps/portal-367 created
+job.batch/ingress-check created
+ingress.networking.k8s.io/ingress-admin created
+ingress.networking.k8s.io/ingress-www created
+==> รอ pod พร้อม
+Waiting for deployment "portal-367" rollout to finish: 0 of 1 updated replicas are available...
+deployment "portal-367" successfully rolled out
+deployment "app-research" successfully rolled out
+Waiting for deployment "api-367" rollout to finish: 1 of 3 updated replicas are available...
+Waiting for deployment "api-367" rollout to finish: 2 of 3 updated replicas are available...
+deployment "api-367" successfully rolled out
+deployment "admin-367" successfully rolled out
+
+เสร็จแล้ว. ดูผลทดสอบด้วย:  kubectl logs -f job/ingress-check --pod-running-timeout=180s
+ถ้าจะเปิดด้วยเบราว์เซอร์ ทำตาม README ข้อ 3

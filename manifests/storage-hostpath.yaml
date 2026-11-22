@@ -1,0 +1,35 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: app-research-pv
+  labels:
+    app.kubernetes.io/part-of: k8s-ingress-exam
+spec:
+  capacity:
+    storage: 100Mi
+  accessModes: ["ReadWriteOnce"]
+  persistentVolumeReclaimPolicy: Retain
+  claimRef:
+    namespace: default
+    name: app-research-data
+  hostPath:
+    path: /data/app-research
+    type: DirectoryOrCreate
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: portal-367-pv
+  labels:
+    app.kubernetes.io/part-of: k8s-ingress-exam
+spec:
+  capacity:
+    storage: 50Mi
+  accessModes: ["ReadWriteOnce"]
+  persistentVolumeReclaimPolicy: Retain
+  claimRef:
+    namespace: default
+    name: portal-367-data
+  hostPath:
+    path: /data/portal-367
+    type: DirectoryOrCreate

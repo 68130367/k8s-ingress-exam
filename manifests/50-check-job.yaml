@@ -1,0 +1,27 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: ingress-check
+  labels:
+    app.kubernetes.io/part-of: k8s-ingress-exam
+spec:
+  backoffLimit: 0
+  activeDeadlineSeconds: 300
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+        - name: check
+          image: python:3.12-alpine
+          command: ["python", "-u", "/check/check_in_cluster.py"]
+          envFrom:
+            - configMapRef:
+                name: student-info
+          env:
+            - name: DOMAIN
+              value: iam-367.com
+          volumeMounts:
+            - { name: script, mountPath: /check, readOnly: true }
+      volumes:
+        - name: script
+          configMap: { name: ingress-check-script }
